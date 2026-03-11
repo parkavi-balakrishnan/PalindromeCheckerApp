@@ -1,23 +1,30 @@
-public class UseCase3PalindromeCheckerApp {
+import java.util.Stack;
+
+public class UseCase5PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        
-        String original = "level";
-
       
-        String reversed = "";
+        String word = "madam";
 
-       
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i);
+        Stack<Character> stack = new Stack<>();
+
+        
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
         }
 
        
-        if (original.equals(reversed)) {
-            System.out.println("The string '" + original + "' is a Palindrome.");
+        String reversed = "";
+
+        while (!stack.isEmpty()) {
+            reversed = reversed + stack.pop();
+        }
+
+        if (word.equals(reversed)) {
+            System.out.println("The string '" + word + "' is a Palindrome.");
         } else {
-            System.out.println("The string '" + original + "' is NOT a Palindrome.");
+            System.out.println("The string '" + word + "' is NOT a Palindrome.");
         }
     }
 }
