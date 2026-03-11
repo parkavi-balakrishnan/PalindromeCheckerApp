@@ -1,42 +1,40 @@
-import java.util.Stack;
-import java.util.Queue;
+import java.util.Deque;
 import java.util.LinkedList;
 
-public class UseCase6PalindromeCheckerApp {
+public class UseCase7PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-       
+        
         String word = "madam";
 
-       
-        Stack<Character> stack = new Stack<>();
-        Queue<Character> queue = new LinkedList<>();
-
       
+        Deque<Character> deque = new LinkedList<>();
+
+       
         for (int i = 0; i < word.length(); i++) {
-            stack.push(word.charAt(i));
-            queue.add(word.charAt(i));
+            deque.addLast(word.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        while (!stack.isEmpty()) {
+        
+        while (deque.size() > 1) {
 
-            char fromStack = stack.pop();
-            char fromQueue = queue.remove();
+            char first = deque.removeFirst();
+            char last = deque.removeLast();
 
-            if (fromStack != fromQueue) {
+            if (first != last) {
                 isPalindrome = false;
                 break;
             }
         }
 
-      
         if (isPalindrome) {
             System.out.println("The string '" + word + "' is a Palindrome.");
         } else {
             System.out.println("The string '" + word + "' is NOT a Palindrome.");
         }
     }
+}
 }
