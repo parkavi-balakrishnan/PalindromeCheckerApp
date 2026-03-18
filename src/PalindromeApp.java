@@ -1,40 +1,24 @@
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.Scanner;
 
-public class UseCase7PalindromeCheckerApp {
+public class PalindromeUC9 {
+
+    public static boolean isPalindrome(String str, int start, int end) {
+        if (start >= end) return true;
+        if (str.charAt(start) != str.charAt(end)) return false;
+        return isPalindrome(str, start + 1, end - 1);
+    }
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
 
-        
-        String word = "madam";
-
-      
-        Deque<Character> deque = new LinkedList<>();
-
-       
-        for (int i = 0; i < word.length(); i++) {
-            deque.addLast(word.charAt(i));
-        }
-
-        boolean isPalindrome = true;
-
-        
-        while (deque.size() > 1) {
-
-            char first = deque.removeFirst();
-            char last = deque.removeLast();
-
-            if (first != last) {
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        if (isPalindrome) {
-            System.out.println("The string '" + word + "' is a Palindrome.");
+        if (isPalindrome(input, 0, input.length() - 1)) {
+            System.out.println("The string is a palindrome.");
         } else {
-            System.out.println("The string '" + word + "' is NOT a Palindrome.");
+            System.out.println("The string is not a palindrome.");
         }
+
+        sc.close();
     }
-}
 }
